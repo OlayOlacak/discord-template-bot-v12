@@ -11,6 +11,6 @@ for (fileName of filesName) {
     try {
      Client.on(fileName.split(".")[0], (...args) =>  event.execute(...args));
    } catch (err) {
-     console.log("Hata : " + err);
+     console.log("Error : " + err);
   }
 };
