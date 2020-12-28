@@ -1,16 +1,16 @@
 const Client = require("../main");
 const { readdirSync } = require("fs");
 
-const filesName = readdirSync("./Events");
+const Events = readdirSync("./Events");
 
-for (fileName of filesName) {
+Events.forEach((eventName) => {
 
-    const Event = require(`../Events/` + fileName);
+    const Event = require(`../Events/` + eventName);
     const event = new Event();
 
     try {
-     Client.on(fileName.split(".")[0], (...args) =>  event.execute(...args));
+     Client.on(eventName.split(".")[0], (...args) =>  event.execute(...args));
    } catch (err) {
      console.log("Error : " + err);
   }
-};
+});

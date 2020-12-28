@@ -2,13 +2,14 @@ const Command = require("../../Base/Command");
 
 module.exports = class extends Command {
   name = "test"
+  aliases = ["testing"]
   description = "deneme"
-  permissions = ["ADMINISTRATOR"]
+  category = "general"
   owner = false
 
-  execute(args, message) {
+  async execute(client, args, message) {
 
-    message.channel.send("deneme");
+    await message.reply("test commands");
 
   }
 }

@@ -1,18 +1,14 @@
 const { readdirSync } = require("fs");
+const Client = require("../main")
 
-global.commands = new Map();
+const categories = readdirSync("./Commands/");
 
-const folderName = readdirSync("./Commands/");
-for (let folder of folderName) {
-
-  const filesName = readdirSync("./Commands/" + folder);
-
-  for (let fileName of filesName) {
-
-    const Command = require(`../Commands/${folder}/${fileName}`);
+categories.forEach(async (category) => {
+  const commands = readdirSync(`./Commands/${category}`);
+  commands.filter((cmd) => cmd.endsWith(".js")).forEach((cmd) => {
+    const Command = require(`../Commands/${category}/${cmd}`);
     let command = new Command();
-    command.category = folder;
 
-    global.commands.set(command.name, command);
-  }
-}
+    Client.commands.set(command.name, command);
+  });
+});
