@@ -13,7 +13,6 @@ module.exports = class {
 
       if (message.author.bot) return;
 
-
       if (!message.content.startsWith(prefix)) return;
       const args = message.content.split(" ").slice(1);
       const commandName = message.content.split(" ")[0].slice(prefix.length);
