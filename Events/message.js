@@ -11,6 +11,7 @@ module.exports = class {
 
     async execute(message) {
 
+
       if (message.author.bot) return;
 
       if (!message.content.startsWith(prefix)) return;
